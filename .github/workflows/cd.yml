@@ -11,6 +11,8 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     steps:
       - name: Check out code
@@ -23,6 +25,15 @@ jobs:
 
       - name: Build
         run: scripts/buildprod.sh
+
+      - name: Install goose for migrations
+        run: go install github.com/pressly/goose/v3/cmd/goose@latest
+      
+      - name: Run migrations
+        run: /scripts/migrateup.sh
+
+      - name: check if no secrets are exposed
+        run: git diff HEAD
 
       - id: 'auth'
         uses: 'google-github-actions/auth@v2'
