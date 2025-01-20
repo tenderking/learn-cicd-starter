@@ -1,7 +1,12 @@
 ![code coverage badge](https://github.com/tenderking/learn-cicd-starter/actions/workflows/ci.yml/badge.svg)
-# learn-cicd-starter (Notely)
+# learn-cicd (Notely)
 
-This repo contains the starter code for the "Notely" application for the "Learn CICD" course on [Boot.dev](https://boot.dev).
+Welcome to the "Notely" application for the "Learn CICD" course on [Boot.dev](https://boot.dev). The main purpose is to apply dev principles and show case a CI/CD pipeline using github actions.
+It includes:
+- a ci pipeline for linting, tests and security checks
+- a cd pipeline for db migrations and a deployment to gcp.
+- sqlc for data modeling and code generation for db
+- dockerfile for turning app to  a docker container which will be deplyoed on gcp
 
 ## Local Development
 
@@ -21,4 +26,3 @@ go build -o notely && ./notely
 
 *This starts the server in non-database mode.* It will serve a simple webpage at `http://localhost:8080`.
 
-You do *not* need to set up a database or any interactivity on the webpage yet. Instructions for that will come later in the course!
